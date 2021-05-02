@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TextareaComponent } from './components/textarea/textarea.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TextareaComponent
+    TextareaComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
