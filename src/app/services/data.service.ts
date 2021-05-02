@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import {
+  Injectable
+} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +10,26 @@ export class DataService {
   public value: string = '';
   public data: any = [];
   public dataKeys: string[] = [];
+  public isDataLoaded: boolean = false;
 
-  constructor() { }
+  public newData: any = {};
 
-  transformData(): void {
+  constructor() {}
+
+  public transformData(): void {
     this.data = JSON.parse(this.value);
-    this.dataKeys = Object.keys(this.data[0])
-    this.value = '';
+    this.dataKeys = Object.keys(this.data[0]);
+    this.isDataLoaded = true;
+  }
+
+  public downloadData(): void {
+    this.isDataLoaded = false;
+  }
+
+  public addData(): void {
+    this.data.push({
+      ...this.newData
+    });
+    this.newData = {};
   }
 }

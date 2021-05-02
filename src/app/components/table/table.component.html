@@ -7,12 +7,32 @@
         *ngFor="let key of dataService.dataKeys">
         {{ key }}
       </th>
+      <th scope="col">features</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of dataService.data; let i = index">
       <th scope="row">{{ i + 1 }}</th>
       <td *ngFor="let key of dataService.dataKeys">{{ item[key] }}</td>
+      <td>
+        <i class="table__icon fa fa-edit mr-2" [id]="i"></i>
+        <i class="table__icon fa fa-times" [id]="i"></i>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<div class="inputs">
+  <input
+    class="form-control mb-1 inputs__item"
+    type="text"
+    [placeholder]="key"
+    [(ngModel)]="dataService.newData[key]"
+    *ngFor="let key of dataService.dataKeys">
+    <button
+      type="submit"
+      class="btn btn-primary mb-2"
+      (click)="dataService.addData()">
+        Добавить
+    </button>
+</div>

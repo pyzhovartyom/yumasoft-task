@@ -1,1 +1,14 @@
-<button type="submit" class="btn btn-primary mb-2">Продолжить</button>
+<button
+  *ngIf="!dataService.isDataLoaded"
+  type="submit"
+  class="btn btn-primary mb-2"
+  (click)="dataService.transformData()">
+    Продолжить
+</button>
+<button
+  *ngIf="dataService.isDataLoaded"
+  type="submit"
+  class="btn btn-primary mb-2"
+  (click)="dataService.downloadData()">
+    Выгрузить
+</button>
