@@ -8,7 +8,7 @@ import {
 export class DataService {
 
   public value: string = '';
-  public data: any = [];
+  public data: any[] = [];
   public dataKeys: string[] = [];
   public isDataLoaded: boolean = false;
 
@@ -24,6 +24,7 @@ export class DataService {
 
   public downloadData(): void {
     this.isDataLoaded = false;
+    
   }
 
   public addData(): void {
@@ -31,5 +32,10 @@ export class DataService {
       ...this.newData
     });
     this.newData = {};
+  }
+
+  public deleteData(event: any): void {
+    const ITEM_ID = event.target.id;
+    this.data.splice(ITEM_ID, 1);
   }
 }

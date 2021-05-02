@@ -1,4 +1,4 @@
-<table class="table table-dark">
+<table class="table table-dark container">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -15,16 +15,16 @@
       <th scope="row">{{ i + 1 }}</th>
       <td *ngFor="let key of dataService.dataKeys">{{ item[key] }}</td>
       <td>
-        <i class="table__icon fa fa-edit mr-2" [id]="i"></i>
-        <i class="table__icon fa fa-times" [id]="i"></i>
+        <i class="fa fa-edit mr-2" [id]="i"></i>
+        <i class="fa fa-times" [id]="i" (click)="dataService.deleteData($event)"></i>
       </td>
     </tr>
   </tbody>
 </table>
 
-<div class="inputs">
+<div class="inputs container">
   <input
-    class="form-control mb-1 inputs__item"
+    class="form-control mb-2 inputs__item"
     type="text"
     [placeholder]="key"
     [(ngModel)]="dataService.newData[key]"
