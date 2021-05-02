@@ -1,5 +1,15 @@
+<app-table></app-table>
 <div class="textarea form-group container">
-    <label class="h3 mb-4" for="textareaComponent">Введите данные JSON</label>
-    <textarea class="form-control mb-3 textarea__input" id="textareaComponent" rows="3"></textarea>
-    <app-button></app-button>
+    <label
+      class="h3 mb-4"
+      for="textareaComponent">
+      Введите данные JSON
+    </label>
+    <textarea
+      class="form-control mb-3 textarea__input"
+      id="textareaComponent"
+      rows="3"
+      [(ngModel)]="dataService.value">
+    </textarea>
+    <app-button (click)="dataService.transformData()"></app-button>
 </div>
