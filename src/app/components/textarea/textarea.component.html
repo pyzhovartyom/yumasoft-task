@@ -16,10 +16,9 @@
       (click)="dataService.downloadJSONinFile()">
       Выгрузить JSON-файл
     </a>
-    <!-- <input
-      class="form-control"
-      type="file"
-      accept=".json, .csv"
-      placeholder="Выберите файл"
-      [(ngModel)]="dataService.value"> -->
+    <a
+      class="textarea__link"
+      (click)="dataService.loadJSONfromFile()">
+      Загрузить JSON-файл из базы
+    </a>
 </div>

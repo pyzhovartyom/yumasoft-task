@@ -56,4 +56,12 @@ export class DataService {
     link.href = URL.createObjectURL(file);
     link.download = 'json-sample.json'
   }
+
+  public loadJSONfromFile(): void {
+    const RANDOM_NUMBER: number = Math.round(Math.random() * 3.4);
+
+    fetch(`../../assets/json-samples/sample${RANDOM_NUMBER}.json`)
+      .then((data: any) => data.json())
+      .then((data: any) => this.value = JSON.stringify(data))
+  }
 }
