@@ -11,4 +11,15 @@
       [(ngModel)]="dataService.value">
     </textarea>
     <app-button></app-button>
+    <a
+      class="textarea__link"
+      (click)="dataService.downloadJSONinFile()">
+      Выгрузить JSON-файл
+    </a>
+    <!-- <input
+      class="form-control"
+      type="file"
+      accept=".json, .csv"
+      placeholder="Выберите файл"
+      [(ngModel)]="dataService.value"> -->
 </div>

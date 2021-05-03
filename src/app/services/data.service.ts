@@ -48,4 +48,12 @@ export class DataService {
     this.catchId(event);
     this.data.splice(this.selectedId, 1);
   }
- }
+
+  public downloadJSONinFile(): void {
+    let link: any = document.querySelector('.textarea__link');
+    let file: Blob = new Blob([this.value], {type: 'json'});
+
+    link.href = URL.createObjectURL(file);
+    link.download = 'json-sample.json'
+  }
+}
