@@ -1,6 +1,7 @@
 import {
   Injectable
 } from '@angular/core';
+import { ChangePosition } from '../models/change-position';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,11 @@ export class DataService {
 
   public newData: any = {};
   public selectedId: number = 0;
+
+  public changePosition: ChangePosition = {
+    old: 1,
+    new: 2
+  }
 
   constructor() {}
 
@@ -63,5 +69,29 @@ export class DataService {
     fetch(`../../assets/json-samples/sample${RANDOM_NUMBER}.json`)
       .then((data: any) => data.json())
       .then((data: any) => this.value = JSON.stringify(data))
+  }
+
+  public changePositions():void {
+    const BELOW_ZERO: boolean = Boolean(this.changePosition.old > 0 && this.changePosition.new > 0);
+    const BELOW_LAST_INDEX: boolean = Boolean(this.changePosition.old <= this.data.length && this.changePosition.new <= this.data.length);
+
+    if (BELOW_ZERO && BELOW_LAST_INDEX) {
+
+      const TEMP_OBJECT_1 = {
+        ...this.data[Number(this.changePosition.old - 1)]
+      };
+  
+      const TEMP_OBJECT_2 = {
+        ...this.data[Number(this.changePosition.new - 1)]
+      };
+  
+      this.data[this.changePosition.old - 1] = {
+        ...TEMP_OBJECT_2
+      }
+
+      this.data[this.changePosition.new - 1] = {
+        ...TEMP_OBJECT_1
+      }
+    }
   }
 }

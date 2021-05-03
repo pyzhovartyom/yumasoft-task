@@ -40,10 +40,30 @@
     *ngFor="let key of dataService.dataKeys">
   <button
     type="submit"
-    class="btn btn-primary mb-2"
+    class="btn btn-primary mb-4"
     (click)="dataService.addData()">
       Добавить
   </button>
 </div>
+
+<div class="change container mb-4">
+  <span>Изменить позицию</span>
+  <input
+    class="form-control change__item"
+    type="text"
+    [(ngModel)]="dataService.changePosition.old">
+  <span>на</span>
+  <input
+    class="form-control change__item"
+    type="text"
+    [(ngModel)]="dataService.changePosition.new">
+  <button
+    type="submit"
+    class="btn btn-primary"
+    (click)="dataService.changePositions()">
+      Изменить
+  </button>
+</div>
+
 <app-button class="container"></app-button>
 

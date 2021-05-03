@@ -13,3 +13,13 @@
         width: 400px;
     }
 }
+
+.change {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    &__item {
+        width: 100px;
+    }
+}
