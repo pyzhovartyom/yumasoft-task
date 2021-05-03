@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditorComponent } from './components/editor/editor.component';
 import { TableComponent } from './components/table/table.component';
 import { TextareaComponent } from './components/textarea/textarea.component';
+import { NewSessionGuard } from './guards/new-session.guard';
 
 const routes: Routes = [
   {
@@ -12,10 +13,12 @@ const routes: Routes = [
   {
     path: 'table',
     component: TableComponent,
+    canActivate: [NewSessionGuard]
   },
   {
     path: 'editor',
     component: EditorComponent,
+    canActivate: [NewSessionGuard]
   },
   {
     path: '**',

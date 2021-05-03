@@ -12,6 +12,7 @@ export class DataService {
   public dataKeys: string[] = [];
   public isDataLoaded: boolean = false;
   public isTextAreaEnabled: boolean = true;
+  public isNewSession: boolean = true;
 
   public newData: any = {};
   public selectedId: number = 0;
@@ -21,6 +22,7 @@ export class DataService {
   public transformData(): void {
     this.data = JSON.parse(this.value);
     this.dataKeys = Object.keys(this.data[0]);
+    this.isNewSession = false;
     this.isDataLoaded = true;
     this.isTextAreaEnabled = false;
   }
@@ -46,11 +48,4 @@ export class DataService {
     this.catchId(event);
     this.data.splice(this.selectedId, 1);
   }
-
-  public replaceData(): void {
-    this.data[this.selectedId] = {
-      ...this.newData
-    };
-    this.newData = {};
-  }
-}
+ }
