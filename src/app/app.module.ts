@@ -9,13 +9,15 @@ import { ButtonComponent } from './components/button/button.component';
 import { TableComponent } from './components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { DataService } from './services/data.service';
+import { EditorComponent } from './components/editor/editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TextareaComponent,
     ButtonComponent,
-    TableComponent
+    TableComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,

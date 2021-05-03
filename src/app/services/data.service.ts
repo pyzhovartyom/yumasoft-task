@@ -13,6 +13,7 @@ export class DataService {
   public isDataLoaded: boolean = false;
 
   public newData: any = {};
+  public selectedId: number = 0;
 
   constructor() {}
 
@@ -24,7 +25,7 @@ export class DataService {
 
   public downloadData(): void {
     this.isDataLoaded = false;
-    
+    this.value = String(JSON.stringify(this.data))
   }
 
   public addData(): void {
@@ -34,8 +35,19 @@ export class DataService {
     this.newData = {};
   }
 
+  public catchId(event: any): void {
+    this.selectedId = Number(event.target.id);
+  }
+
   public deleteData(event: any): void {
-    const ITEM_ID = event.target.id;
-    this.data.splice(ITEM_ID, 1);
+    this.catchId(event);
+    this.data.splice(this.selectedId, 1);
+  }
+
+  public replaceData(): void {
+    this.data[this.selectedId] = {
+      ...this.newData
+    };
+    this.newData = {};
   }
 }

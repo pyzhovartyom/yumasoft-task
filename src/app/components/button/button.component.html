@@ -2,13 +2,15 @@
   *ngIf="!dataService.isDataLoaded"
   type="submit"
   class="btn btn-primary mb-2"
-  (click)="dataService.transformData()">
+  (click)="dataService.transformData()"
+  routerLink="/table">
     Продолжить
 </button>
 <button
   *ngIf="dataService.isDataLoaded"
   type="submit"
   class="btn btn-primary mb-2"
-  (click)="dataService.downloadData()">
+  (click)="dataService.downloadData()"
+  routerLink="/">
     Выгрузить
 </button>

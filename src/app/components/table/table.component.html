@@ -15,8 +15,17 @@
       <th scope="row">{{ i + 1 }}</th>
       <td *ngFor="let key of dataService.dataKeys">{{ item[key] }}</td>
       <td>
-        <i class="fa fa-edit mr-2" [id]="i"></i>
-        <i class="fa fa-times" [id]="i" (click)="dataService.deleteData($event)"></i>
+        <i
+          class="table__icon fa fa-edit mr-2"
+          [id]="i"
+          routerLink="/editor"
+          (click)="dataService.catchId($event)">
+        </i>
+        <i
+          class="table__icon fa fa-times"
+          [id]="i"
+          (click)="dataService.deleteData($event)">
+        </i>
       </td>
     </tr>
   </tbody>
@@ -29,10 +38,12 @@
     [placeholder]="key"
     [(ngModel)]="dataService.newData[key]"
     *ngFor="let key of dataService.dataKeys">
-    <button
-      type="submit"
-      class="btn btn-primary mb-2"
-      (click)="dataService.addData()">
-        Добавить
-    </button>
+  <button
+    type="submit"
+    class="btn btn-primary mb-2"
+    (click)="dataService.addData()">
+      Добавить
+  </button>
 </div>
+
+<app-textarea></app-textarea>

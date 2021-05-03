@@ -1,0 +1,16 @@
+<div class="editor container">
+    <h2>Редактирование элемента №{{ dataService.selectedId + 1 }}</h2>
+    <input
+      class="form-control mb-2 inputs__item"
+      type="text"
+      [placeholder]="key"
+      [(ngModel)]="dataService.newData[key]"
+      *ngFor="let key of dataService.dataKeys">
+    <button
+      type="submit"
+      class="btn btn-primary mb-2"
+      (click)="dataService.replaceData()"
+      routerLink="/table">
+        Заменить
+    </button>
+</div>

@@ -2,6 +2,12 @@
     display: block;
 }
 
+.table {
+    &__icon {
+        cursor: pointer;
+    }
+}
+
 .inputs {
     &__item {
         width: 400px;
