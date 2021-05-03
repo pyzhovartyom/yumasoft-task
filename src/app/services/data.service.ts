@@ -11,6 +11,7 @@ export class DataService {
   public data: any[] = [];
   public dataKeys: string[] = [];
   public isDataLoaded: boolean = false;
+  public isTextAreaEnabled: boolean = true;
 
   public newData: any = {};
   public selectedId: number = 0;
@@ -21,11 +22,13 @@ export class DataService {
     this.data = JSON.parse(this.value);
     this.dataKeys = Object.keys(this.data[0]);
     this.isDataLoaded = true;
+    this.isTextAreaEnabled = false;
   }
 
   public downloadData(): void {
     this.isDataLoaded = false;
-    this.value = String(JSON.stringify(this.data))
+    this.value = String(JSON.stringify(this.data));
+    this.isTextAreaEnabled = true;
   }
 
   public addData(): void {

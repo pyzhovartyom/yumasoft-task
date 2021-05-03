@@ -6,6 +6,7 @@
     </label>
     <textarea
       class="form-control mb-3 textarea__input"
+      [disabled]="!dataService.isTextAreaEnabled"
       id="textareaComponent"
       rows="3"
       [(ngModel)]="dataService.value">
