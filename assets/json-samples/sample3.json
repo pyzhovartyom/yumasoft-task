@@ -1,0 +1,21 @@
+[{
+  "model": "ford",
+  "volume": "2400",
+  "isNew": "true",
+  "discount": "5"
+}, {
+  "model": "mercedes",
+  "volume": "3000",
+  "isNew": "true",
+  "discount": "0"
+}, {
+  "model": "bwm",
+  "volume": "2300",
+  "isNew": "false",
+  "discount": "20"
+}, {
+  "model": "fiat",
+  "volume": "1200",
+  "isNew": "true",
+  "discount": "12"
+}]
