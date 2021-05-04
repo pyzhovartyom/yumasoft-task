@@ -22,10 +22,10 @@ export class DataService {
   public changePosition: ChangePosition = {
     old: 1,
     new: 2
-  }
+  };
 
   constructor(
-    private _router: Router
+    private router: Router
   ) {}
 
   public transformData(): void {
@@ -53,12 +53,12 @@ export class DataService {
 
     if (length === 0 || length !== this.dataKeys.length) {
       alert('Нельзя добавить пустой объект');
-      return
+      return;
     } else {
-      for (let key in this.newData) {
+      for (const key in this.newData) {
         if (this.newData[key].length === 0) {
           alert('Введите данные в строку ' + key);
-          return
+          return;
         }
       }
       this.data.push({
@@ -71,10 +71,10 @@ export class DataService {
   public catchId(event: any): void {
     this.selectedId = Number(event.target.id);
   }
-  
+
   public openEditor(event: any): void {
     this.catchId(event);
-    this._router.navigate(['editor', String(this.selectedId + 1)]);
+    this.router.navigate(['editor', String(this.selectedId + 1)]);
   }
 
   public deleteData(event: any): void {
@@ -87,7 +87,7 @@ export class DataService {
     const FILE: Blob = new Blob([this.value], {type: 'json'});
 
     LINK.href = URL.createObjectURL(FILE);
-    LINK.download = 'json-sample.json'
+    LINK.download = 'json-sample.json';
   }
 
   public loadJSONfromFile(): void {
@@ -95,10 +95,10 @@ export class DataService {
 
     fetch(`../../assets/json-samples/sample${RANDOM_NUMBER}.json`)
       .then((data: any) => data.json())
-      .then((data: any) => this.value = JSON.stringify(data))
+      .then((data: any) => this.value = JSON.stringify(data));
   }
 
-  public changePositions():void {
+  public changePositions(): void {
     const BELOW_ZERO: boolean = Boolean(this.changePosition.old > 0 && this.changePosition.new > 0);
     const BELOW_LAST_INDEX: boolean = Boolean(this.changePosition.old <= this.data.length && this.changePosition.new <= this.data.length);
 
@@ -107,18 +107,18 @@ export class DataService {
       const TEMP_OBJECT_1 = {
         ...this.data[Number(this.changePosition.old - 1)]
       };
-  
+
       const TEMP_OBJECT_2 = {
         ...this.data[Number(this.changePosition.new - 1)]
       };
-  
+
       this.data[this.changePosition.old - 1] = {
         ...TEMP_OBJECT_2
-      }
+      };
 
       this.data[this.changePosition.new - 1] = {
         ...TEMP_OBJECT_1
-      }
+      };
     }
   }
 
@@ -127,17 +127,17 @@ export class DataService {
     const files = input.files;
 
     if (files.length <= 0) {
-      return
+      return;
     }
-    
+
     const fr = new FileReader();
-    
-    fr.onload = (elem: any) => { 
+
+    fr.onload = (elem: any) => {
       const result = elem.target.result;
       const formatted = JSON.stringify(result, null, 2);
       this.value = result;
-    }
-    
+    };
+
     fr.readAsText(files.item(0));
   }
 }

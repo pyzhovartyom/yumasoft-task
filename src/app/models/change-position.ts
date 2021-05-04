@@ -1,4 +1,4 @@
 export interface ChangePosition {
-    old: number,
-    new: number
+    old: number;
+    new: number;
 }

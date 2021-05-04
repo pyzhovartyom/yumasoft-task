@@ -9,8 +9,8 @@ import { DataService } from '../services/data.service';
 export class NewSessionGuard implements CanActivate {
 
   constructor(
-    private _router: Router,
-    private _dataService: DataService
+    private router: Router,
+    private dataService: DataService
   ) {
 
   }
@@ -18,13 +18,12 @@ export class NewSessionGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const PERMISSION = this._dataService.isNewSession;
+      const PERMISSION = this.dataService.isNewSession;
       if (PERMISSION) {
-        this._router.navigate(['/']);
-        return false
+        this.router.navigate(['/']);
+        return false;
       } else {
         return true;
       }
   }
-  
 }
