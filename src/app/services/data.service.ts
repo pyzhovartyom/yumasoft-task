@@ -1,6 +1,7 @@
 import {
   Injectable
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { timeStamp } from 'node:console';
 import { ChangePosition } from '../models/change-position';
 
@@ -24,7 +25,9 @@ export class DataService {
     new: 2
   }
 
-  constructor() {}
+  constructor(
+    private _router: Router
+  ) {}
 
   public transformData(): void {
     try {
@@ -68,6 +71,7 @@ export class DataService {
 
   public catchId(event: any): void {
     this.selectedId = Number(event.target.id);
+    this._router.navigate(['editor', String(this.selectedId + 1)])
   }
 
   public deleteData(event: any): void {

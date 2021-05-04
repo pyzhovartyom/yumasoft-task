@@ -16,7 +16,7 @@ const routes: Routes = [
     canActivate: [NewSessionGuard]
   },
   {
-    path: 'editor',
+    path: 'editor/:id',
     component: EditorComponent,
     canActivate: [NewSessionGuard]
   },
