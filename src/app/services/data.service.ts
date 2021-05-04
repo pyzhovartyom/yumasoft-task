@@ -26,11 +26,17 @@ export class DataService {
   constructor() {}
 
   public transformData(): void {
-    this.data = JSON.parse(this.value);
-    this.dataKeys = Object.keys(this.data[0]);
-    this.isNewSession = false;
-    this.isDataLoaded = true;
-    this.isTextAreaEnabled = false;
+    try {
+      this.data = JSON.parse(this.value);
+      this.dataKeys = Object.keys(this.data[0]);
+      this.isNewSession = false;
+      this.isDataLoaded = true;
+      this.isTextAreaEnabled = false;
+    } catch (err) {
+        alert('Пожалуйста, введите корректные данные');
+        console.error('Please, insert correct data', err);
+    }
+
   }
 
   public downloadData(): void {
@@ -56,11 +62,11 @@ export class DataService {
   }
 
   public downloadJSONinFile(): void {
-    let link: any = document.querySelector('.textarea__link');
-    let file: Blob = new Blob([this.value], {type: 'json'});
+    const LINK: any = document.querySelector('.textarea__link');
+    const FILE: Blob = new Blob([this.value], {type: 'json'});
 
-    link.href = URL.createObjectURL(file);
-    link.download = 'json-sample.json'
+    LINK.href = URL.createObjectURL(FILE);
+    LINK.download = 'json-sample.json'
   }
 
   public loadJSONfromFile(): void {
