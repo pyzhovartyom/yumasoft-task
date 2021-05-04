@@ -2,7 +2,6 @@ import {
   Injectable
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { timeStamp } from 'node:console';
 import { ChangePosition } from '../models/change-position';
 
 @Injectable({
@@ -39,8 +38,8 @@ export class DataService {
     } catch (err) {
         alert('Пожалуйста, введите корректные данные');
         console.error('Please, insert correct data', err);
+        this.isNewSession = true;
     }
-
   }
 
   public downloadData(): void {
