@@ -3,22 +3,17 @@
 }
 
 .textarea {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: center;
-
     height: 400px;
 
     &__input {
         resize: none;
     }
 
-    &__file {
-        width: 300px;
+    &__link {
+        cursor: pointer;
     }
 
-    &__import-block {
-        display: flex;
+    &__file {
+        width: 300px;
     }
 }
