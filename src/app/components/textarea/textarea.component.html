@@ -19,6 +19,18 @@
     <a
       class="textarea__link"
       (click)="dataService.loadJSONfromFile()">
-      Загрузить JSON-файл из базы
+      Загрузить рандомный JSON-массив из базы
     </a>
+    <div class="textarea__import-block">
+      <input
+        class="form-control mt-2 textarea__file"
+        type="file"
+        value="Import">
+      <button
+        class="btn btn-primary mt-2 textarea__import-button"
+        type="submit"
+        (click)="dataService.importJSON()">
+          Import
+      </button>
+    </div>
 </div>

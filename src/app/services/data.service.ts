@@ -71,7 +71,11 @@ export class DataService {
 
   public catchId(event: any): void {
     this.selectedId = Number(event.target.id);
-    this._router.navigate(['editor', String(this.selectedId + 1)])
+  }
+  
+  public openEditor(event: any): void {
+    this.catchId(event);
+    this._router.navigate(['editor', String(this.selectedId + 1)]);
   }
 
   public deleteData(event: any): void {
@@ -117,5 +121,24 @@ export class DataService {
         ...TEMP_OBJECT_1
       }
     }
+  }
+
+  public importJSON(): void {
+    const input: any = document.querySelector('.textarea__file');
+    const files = input.files;
+
+    if (files.length <= 0) {
+      return
+    }
+    
+    const fr = new FileReader();
+    
+    fr.onload = (elem: any) => { 
+      const result = elem.target.result;
+      const formatted = JSON.stringify(result, null, 2);
+      this.value = result;
+    }
+    
+    fr.readAsText(files.item(0));
   }
 }
