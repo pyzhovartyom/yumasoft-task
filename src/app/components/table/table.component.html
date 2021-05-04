@@ -30,22 +30,7 @@
     </tr>
   </tbody>
 </table>
-
-<div class="inputs container">
-  <input
-    class="form-control mb-2 inputs__item"
-    type="text"
-    [placeholder]="key"
-    [(ngModel)]="dataService.newData[key]"
-    *ngFor="let key of dataService.dataKeys">
-  <button
-    type="submit"
-    class="btn btn-primary mb-4"
-    (click)="dataService.addData()">
-      Добавить
-  </button>
-</div>
-
+<hr>
 <div class="change container mb-4">
   <span>Изменить позицию</span>
   <input
@@ -64,6 +49,24 @@
       Изменить
   </button>
 </div>
-
+<hr>
+<div class="inputs container">
+  <input
+    class="form-control mb-2 inputs__item"
+    maxlength="30"
+    type="text"
+    pattern="(.*[0-9A-Za-z].*)"
+    [placeholder]="key"
+    [(ngModel)]="dataService.newData[key]"
+    *ngFor="let key of dataService.dataKeys"
+    required>
+  <button
+    type="submit"
+    class="btn btn-primary mb-4"
+    (click)="dataService.addData()">
+      Добавить
+  </button>
+</div>
+<hr>
 <app-button class="container"></app-button>
 

@@ -1,6 +1,7 @@
 import {
   Injectable
 } from '@angular/core';
+import { timeStamp } from 'node:console';
 import { ChangePosition } from '../models/change-position';
 
 @Injectable({
@@ -46,10 +47,23 @@ export class DataService {
   }
 
   public addData(): void {
-    this.data.push({
-      ...this.newData
-    });
-    this.newData = {};
+    const length: number = Number(Object.keys(this.newData).length);
+
+    if (length === 0 || length !== this.dataKeys.length) {
+      alert('Нельзя добавить пустой объект');
+      return
+    } else {
+      for (let key in this.newData) {
+        if (this.newData[key].length === 0) {
+          alert('Введите данные в строку ' + key);
+          return
+        }
+      }
+      this.data.push({
+        ...this.newData
+      });
+      this.newData = {};
+    }
   }
 
   public catchId(event: any): void {
